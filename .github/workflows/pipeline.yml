@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set PowerShell Execution Policy
+        run: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+        shell: pwsh
+
+      - name: COMPILE
+        run: Write-Output "Hello, world!"
+        shell: pwsh
+
+      - name: DEPLOY
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+        shell: pwsh
